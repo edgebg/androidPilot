@@ -1,16 +1,42 @@
-package org.edgebg.androidpilot;
+package org.edgebg.androidpilot.activity;
+
+import org.edgebg.androidpilot.R;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
+
+
+
+/**
+ * 
+ * Glavna activity klasa. Delegira ka svim drugim aktivnostima.
+ * @author Ivica
+ *
+ */
 public class MainActivity extends Activity {
 
+	Button aboutActivityButton;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		aboutActivityButton = (Button) findViewById(R.id.aboutActivityButton);
+		aboutActivityButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getApplicationContext(), AboutActivity.class);
+				startActivity(i);
+			}
+		});
 	}
 
 	@Override
